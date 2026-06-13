@@ -16,3 +16,7 @@ android {
     abortOnError false
   }
 }
+
+dependencies {
+  implementation 'com.tananaev:adblib:1.3'
+}

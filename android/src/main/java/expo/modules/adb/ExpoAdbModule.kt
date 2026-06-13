@@ -1,21 +1,28 @@
 package expo.modules.adb
 
+import android.content.Context
 import expo.modules.kotlin.modules.Module
 import expo.modules.kotlin.modules.ModuleDefinition
 
 class ExpoAdbModule : Module() {
+  private val context: Context
+    get() = requireNotNull(appContext.reactContext) {
+      "React context is not available"
+    }
+
   override fun definition() = ModuleDefinition {
     Name("ExpoAdb")
 
-    Constant("PI") {
-      Math.PI
+    AsyncFunction("isAvailable") {
+      AdbShellClient.isAvailable(context)
     }
 
-    Function("hello") {
-      "Hello world! 👋"
+    AsyncFunction("executeCommand") { command: String ->
+      AdbShellClient.executeCommands(context, listOf(command))
     }
 
-    AsyncFunction("setValueAsync") { value: String ->
+    AsyncFunction("executeCommands") { commands: List<String> ->
+      AdbShellClient.executeCommands(context, commands)
     }
   }
 }

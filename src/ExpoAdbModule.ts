@@ -1,9 +1,9 @@
-import { NativeModule, requireNativeModule } from 'expo';
+import { requireNativeModule } from 'expo';
 
-declare class ExpoAdbModule extends NativeModule<{}> {
-  PI: number;
-  hello(): string;
-  setValueAsync(value: string): Promise<void>;
+declare class ExpoAdbModule {
+  isAvailable(): Promise<boolean>;
+  executeCommand(command: string): Promise<string>;
+  executeCommands(commands: string[]): Promise<string>;
 }
 
 export default requireNativeModule<ExpoAdbModule>('ExpoAdb');

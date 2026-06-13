@@ -3,7 +3,7 @@ import type { ExpoAdbModuleType } from './ExpoAdb.types';
 const UNSUPPORTED_MESSAGE =
   'expo-adb is available only on Android devices with a local ADB daemon exposed on 127.0.0.1:5555.';
 
-class ExpoAdbWebModule implements ExpoAdbModuleType {
+class ExpoAdbIosModule implements ExpoAdbModuleType {
   async isAvailable(): Promise<boolean> {
     return false;
   }
@@ -17,4 +17,4 @@ class ExpoAdbWebModule implements ExpoAdbModuleType {
   }
 }
 
-export default new ExpoAdbWebModule();
+export default new ExpoAdbIosModule();

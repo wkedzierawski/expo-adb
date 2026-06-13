@@ -1,7 +1,7 @@
 {
   "name": "expo-adb",
   "version": "0.1.0",
-  "description": "My new module",
+  "description": "Expo module for running Android ADB shell commands over a local TCP ADB daemon",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
@@ -17,7 +17,10 @@
     "react-native",
     "expo",
     "expo-adb",
-    "ExpoAdb"
+    "ExpoAdb",
+    "android",
+    "adb",
+    "android-tv"
   ],
   "repository": "https://github.com/wkedzierawski/expo-adb",
   "bugs": {
