@@ -4,8 +4,6 @@
 
 `expo-adb` is an Expo module that runs Android ADB shell commands through a local ADB daemon exposed on `127.0.0.1:5555`.
 
-This package extracts the ADB communication layer from `expo-tv-launcher` into a standalone module.
-
 ## What it does
 
 - generates and stores an app-local ADB RSA keypair,
@@ -15,7 +13,7 @@ This package extracts the ADB communication layer from `expo-tv-launcher` into a
 
 ## Requirements
 
-- Android only
+- Android only (iOS / Web mocks)
 - local ADB daemon reachable on `127.0.0.1:5555`
 - device configured to accept the generated ADB key
 
@@ -24,6 +22,7 @@ If the device does not expose local ADB or rejects the key, calls will fail.
 ## Installation
 
 ```bash
+yarn add expo-adb
 npm install expo-adb
 ```
 
@@ -74,10 +73,3 @@ await ExpoAdb.executeCommands(['settings get global adb_enabled', 'getprop servi
 - This is not a replacement for desktop `adb`.
 - It only talks to a local daemon already available on the Android device.
 - Some commands may still fail because of Android version, OEM policy, shell privileges, or ADB authorization state.
-
-## Development
-
-```bash
-yarn build
-yarn lint
-```
