@@ -17,8 +17,12 @@ class ExpoAdbModule : Module() {
       AdbShellClient.isAvailable(context)
     }
 
+    AsyncFunction("getAvailabilityDetails") {
+      AdbShellClient.getAvailabilityDetails(context).toMap()
+    }
+
     AsyncFunction("executeCommand") { command: String ->
-      AdbShellClient.executeCommands(context, listOf(command))
+      AdbShellClient.executeCommand(context, command)
     }
 
     AsyncFunction("executeCommands") { commands: List<String> ->

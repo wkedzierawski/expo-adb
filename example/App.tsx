@@ -28,6 +28,15 @@ export default function App() {
               })
             }
           />
+          <Button
+            title="Get availability details"
+            onPress={() =>
+              run(async () => {
+                const details = await ExpoAdb.getAvailabilityDetails();
+                return JSON.stringify(details, null, 2);
+              })
+            }
+          />
         </Group>
         <Group name="Single command">
           <Button

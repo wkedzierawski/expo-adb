@@ -1,17 +1,36 @@
 {
   "name": "expo-adb",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Expo module for running Android ADB shell commands over a local TCP ADB daemon",
   "main": "build/index.js",
   "types": "build/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./build/index.d.ts",
+      "default": "./build/index.js"
+    }
+  },
+  "files": [
+    "android/build.gradle",
+    "android/src",
+    "build",
+    "src",
+    "expo-module.config.json",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "build": "node internal/module_scripts/build.js",
     "clean": "node internal/module_scripts/clean.js",
     "lint": "eslint src/",
     "test": "node internal/module_scripts/test.js",
     "prepare": "node internal/module_scripts/prepare.js",
+    "prepublishOnly": "node internal/module_scripts/prepare.js",
     "open:ios": "node internal/module_scripts/open-ios.js",
-    "open:android": "node internal/module_scripts/open-android.js"
+    "open:android": "node internal/module_scripts/open-android.js",
+    "publish": "npm publish",
+    "pack:dry-run": "npm pack --dry-run"
   },
   "keywords": [
     "react-native",
@@ -22,7 +41,10 @@
     "adb",
     "android-tv"
   ],
-  "repository": "https://github.com/wkedzierawski/expo-adb",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wkedzierawski/expo-adb.git"
+  },
   "bugs": {
     "url": "https://github.com/wkedzierawski/expo-adb/issues"
   },
@@ -54,6 +76,14 @@
     "expo": "*",
     "react": "*",
     "react-native": "*"
+  },
+  "peerDependenciesMeta": {
+    "expo": {
+      "optional": true
+    }
+  },
+  "directories": {
+    "example": "example"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
